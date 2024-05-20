@@ -16,8 +16,6 @@ import com.nextin.firstfirebaseapplication.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private var binding :ActivityMainBinding? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -32,13 +30,12 @@ class MainActivity : AppCompatActivity() {
         myRef2.setValue("Ak47")
         myRef3.setValue("kshitij26")
 
-        myRef3.addValueEventListener(object: ValueEventListener{
+        myRef2.addValueEventListener(object: ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
                 val value = snapshot.getValue<String>()
 
                 binding?.tvMessage?.text = value
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Log.e(TAG, "Failed to read value", error.toException())
             }
